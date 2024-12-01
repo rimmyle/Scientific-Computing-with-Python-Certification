@@ -1,6 +1,11 @@
+# Message to be encrypted/decrypted
 text = 'mrttaqrhknsw ih puggrur'
+# Key to encrypt/decrypt message with 
 custom_key = 'happycoding'
 
+# message: text to be encrypted/decrypted
+# key: key used to encrypt/decrypt message
+# direction: integer used to determine direction of encryption (1 = encrypt (default), -1 = decrypt)
 def vigenere(message, key, direction=1):
     key_index = 0
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -30,6 +35,7 @@ def encrypt(message, key):
 def decrypt(message, key):
     return vigenere(message, key, -1)
 
+# Print examples of usage
 print(f'\nEncrypted text: {text}')
 print(f'Key: {custom_key}')
 decryption = decrypt(text, custom_key)
