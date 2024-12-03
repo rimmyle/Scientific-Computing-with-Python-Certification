@@ -3,13 +3,15 @@
 # category: the category which the amount belongs to
 # expenses: the list of all expenses
 def add_expense(expenses, amount, category):
-    expenses.append({'amount': amount, 'category': category})
+    if expenses.get(category):
+        expenses[category].append(amount)
+    else:
+        expenses[category] = [amount]
 
 # Prints out the list of expenses
 # expenses: the list of all expenses
 def print_expenses(expenses):
-    for expense in expenses:
-        print(f'Amount: {expense["amount"]}, Category: {expense["category"]}')
+    print(expenses)
 
 # Shows the total expenses
 # expenses: the list of all expenses
@@ -24,7 +26,7 @@ def filter_expenses_by_category(expenses, category):
     
 # Provides main interface for user to interact with their Expense Tracker
 def main():
-    expenses = []
+    expenses = {}
     while True:
         # Options for user to interact with the Expense Tracker
         print('\nExpense Tracker')
@@ -49,8 +51,8 @@ def main():
             case '4':
                 # category: specific category entered by user to filter the list of expenses
                 category = input('Enter category to filter: ')
-                print(f'\nExpenses for {category}:')
                 expenses_from_category = filter_expenses_by_category(expenses, category)
+                print(f'\nExpenses for {category}:')
                 print_expenses(expenses_from_category)
             case '5':
                 print('Exiting the program.')
