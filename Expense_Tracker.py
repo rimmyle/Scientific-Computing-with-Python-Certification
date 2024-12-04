@@ -11,18 +11,22 @@ def add_expense(expenses, amount, category):
 # Prints out the list of expenses
 # expenses: the list of all expenses
 def print_expenses(expenses):
-    print(expenses)
+    for expense in expenses:
+        output = f'{expense}:'
+        for amount in expenses[expense]:
+            output += f' ${amount},'
+        print(output[:-1])
 
 # Shows the total expenses
 # expenses: the list of all expenses
 def total_expenses(expenses):
-    return sum(map(lambda expense: expense['amount'], expenses))
+    return sum(map(lambda category: sum(map(lambda amount: amount, expenses[category])), expenses))
 
 # Returns only the expenses for a specified category
 # category: the specific category to get expenses from
 # expenses: the list of all expenses
 def filter_expenses_by_category(expenses, category):
-    return filter(lambda expense: expense['category'] == category, expenses)
+    return {category: expenses[category]}
     
 # Provides main interface for user to interact with their Expense Tracker
 def main():
