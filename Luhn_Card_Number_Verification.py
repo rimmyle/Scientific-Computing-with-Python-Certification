@@ -13,17 +13,12 @@ def verify_card_number(card_number):
         if number >= 10:
             number = (number // 10) + (number % 10)
         sum_of_even_digits += number
-    total = sum_of_odd_digits + sum_of_even_digits
-    return total % 10 == 0
+    return (sum_of_odd_digits + sum_of_even_digits) % 10 == 0
 
 def main():
     card_number = '4111-1111-4515-1141'
     card_translation = str.maketrans({'-': '', ' ': ''})
     translated_card_number = card_number.translate(card_translation)
-
-    if verify_card_number(translated_card_number):
-        print('VALID!')
-    else:
-        print('INVALID!')
+    print('VALID!' if verify_card_number(translated_card_number) else 'INVALID!')
 
 main()
