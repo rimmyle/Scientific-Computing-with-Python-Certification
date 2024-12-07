@@ -11,6 +11,7 @@ def add_expense(expenses, amount, category):
 # Prints out the list of expenses
 # expenses: the list of all expenses
 def print_expenses(expenses):
+    print('\nAll Expenses:')
     for expense in expenses:
         output = f'{expense}:'
         for amount in expenses[expense]:
@@ -48,13 +49,17 @@ def main():
                 category = input('Enter category: ')
                 add_expense(expenses, amount, category)
             case '2':
-                print('\nAll Expenses:')
                 print_expenses(expenses)
             case '3':
                 print('\nTotal Expenses: ', total_expenses(expenses))
             case '4':
                 # category: specific category entered by user to filter the list of expenses
-                category = input('Enter category to filter: ')
+                category = ''
+                keys = list(expenses.keys())
+                while category not in keys:
+                    print('\nSelect one of the following categories:')
+                    print(*keys, sep='\n')
+                    category = input('\nEnter category to filter: ')
                 expenses_from_category = filter_expenses_by_category(expenses, category)
                 print(f'\nExpenses for {category}:')
                 print_expenses(expenses_from_category)
