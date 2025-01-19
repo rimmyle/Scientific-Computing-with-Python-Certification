@@ -1,5 +1,6 @@
 import math
 
+# Category class used to define budget for a specified category which can have money deposited, withdraw as well as transfered to and from another budget category.
 class Category:
     def __str__(self):
         title = self.name.center(30, "*") + '\n'

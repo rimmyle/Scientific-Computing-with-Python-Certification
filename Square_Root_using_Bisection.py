@@ -7,7 +7,6 @@ def square_root_bisection(square_target, tolerance=1e-7, max_iterations=100):
     elif square_target == 0:
         root = 0
         print(f'The square root of {square_target} is 0')
-
     else:
         low = 0
         high = max(1, square_target)
